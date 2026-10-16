@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Miamélie : des recettes gourmandes, faciles et faites maison.">
+<title>Miamélie — Des douceurs qui font sourire</title>
+<style>
+:root{--cream:#fffaf2;--paper:#fffdf9;--brown:#54372c;--caramel:#bd8757;--soft:#f2e4d3;--text:#392a24}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--text);font-family:Georgia,'Times New Roman',serif}
+header{background:linear-gradient(120deg,#f6e8d7,#fffaf2);padding:26px 18px 18px;text-align:center;border-bottom:1px solid #ead8c4}
+.brand{font-size:clamp(2.2rem,7vw,4rem);font-weight:bold;letter-spacing:.04em;color:var(--brown);margin:0}
+.tagline{margin:7px 0 18px;color:#87634b;font-style:italic}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+nav a{color:var(--brown);text-decoration:none;border:1px solid #d8b99b;padding:8px 13px;border-radius:22px;font:14px Arial,sans-serif}
+nav a:hover{background:var(--soft)}
+.hero{max-width:1100px;margin:25px auto;padding:30px 22px;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center}
+.hero h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;color:var(--brown);margin:0 0 12px}
+.hero p{font:17px/1.65 Arial,sans-serif;color:#6f574a}
+.hero-badge{background:var(--soft);border-radius:45% 45% 22px 22px;padding:34px;text-align:center;font-size:5rem;min-height:220px;display:grid;place-items:center}
+.search-wrap{max-width:1100px;margin:0 auto 18px;padding:0 20px}
+input,select{width:100%;padding:13px 15px;border:1px solid #dfc7ad;border-radius:12px;background:#fff;font:15px Arial,sans-serif;color:var(--text)}
+.section{max-width:1100px;margin:25px auto;padding:0 20px}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.section h2{color:var(--brown);font-size:2rem;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 40px}
+.card{background:var(--paper);border:1px solid #eee0d0;border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #5b3b2810}
+.card-art{height:150px;display:grid;place-items:center;background:linear-gradient(135deg,#f3dfc9,#fff4e5);font-size:4.5rem}
+.card-body{padding:17px}
+.tag{font:12px Arial,sans-serif;color:#8b6244;text-transform:uppercase;letter-spacing:.08em}
+.card h3{font-size:1.35rem;color:var(--brown);margin:8px 0}
+.card p{font:14px/1.5 Arial,sans-serif;color:#735e52}
+.meta{font:12px Arial,sans-serif;color:#8a7466;margin:12px 0}
+button{cursor:pointer;border:0;background:var(--brown);color:white;padding:11px 15px;border-radius:22px;font:14px Arial,sans-serif}
+button:hover{background:#79513f}
+.empty{display:none;padding:20px;text-align:center}
+footer{text-align:center;padding:30px 18px;background:#f1e1cf;color:#765743;font:14px/1.7 Arial,sans-serif}
+.modal{display:none;position:fixed;inset:0;background:#24170f99;padding:16px;overflow:auto;z-index:5}
+.modal-content{max-width:760px;margin:25px auto;background:#fffaf2;border-radius:18px;padding:24px;position:relative}
+.close{float:right;background:#ead8c4;color:var(--brown)}
+.recipe-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.modal h2{color:var(--brown)}
+.modal h3{color:#8a5e40}
+.modal li{margin:7px 0;line-height:1.5}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:18px}.hero-badge{min-height:130px;font-size:3.5rem}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card-art{height:115px;font-size:3.4rem}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.card-art{height:135px}.recipe-layout{grid-template-columns:1fr}.modal-content{padding:18px}}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="brand">Miamélie</h1>
+  <p class="tagline">Des douceurs qui font sourire.</p>
+  <nav>
+    <a href="#recettes">Toutes les recettes</a>
+    <a href="#recettes" data-filter="Chocolat">Chocolat</a>
+    <a href="#recettes" data-filter="Gâteaux">Gâteaux</a>
+    <a href="#recettes" data-filter="Sans cuisson">Sans cuisson</a>
+    <a href="#apropos">À propos</a>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <p class="tag">Bienvenue dans ma cuisine</p>
+    <h2>De jolies recettes maison, simples et gourmandes.</h2>
+    <p>Des gâteaux moelleux, des desserts au chocolat et des douceurs faciles à préparer. Choisissez une recette et régalez-vous !</p>
+    <a href="#recettes"><button>Découvrir les recettes ↓</button></a>
+  </div>
+  <div class="hero-badge" aria-label="Illustration de pâtisserie">🧁 🍰</div>
+</section>
+<section class="search-wrap" aria-label="Recherche">
+  <input id="search" type="search" placeholder="Rechercher une recette… (ex. chocolat)" aria-label="Rechercher une recette">
+</section>
+<section class="section" id="recettes">
+  <div class="section-title"><div><p class="tag">Le carnet gourmand</p><h2>Nos recettes</h2></div><span id="count"></span></div>
+  <div class="grid" id="recipeGrid"></div>
+  <p class="empty" id="empty">Aucune recette trouvée. Essayez un autre mot.</p>
+</section>
+<section class="section" id="apropos">
+  <h2>À propos de Miamélie</h2>
+  <p style="font:16px/1.7 Arial,sans-serif;max-width:760px">Bienvenue chez Miamélie ! Vous trouverez ici des recettes sucrées, faciles à suivre et pensées pour le plaisir de cuisiner à la maison. De nouvelles douceurs arriveront au fil du temps. 🤎</p>
+</section>
+</main>
+<footer>© <span id="year"></span> Miamélie · Des douceurs qui font sourire.<br>Les temps de cuisson peuvent varier selon les fours : surveillez toujours votre préparation.</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-content"><button class="close" id="close">Fermer ✕</button><div id="recipeDetail"></div></div>
+</div>
+<script>
+// POUR AJOUTER UNE RECETTE : copiez un objet recette ci-dessous et modifiez ses informations.
+// Gardez les virgules entre les objets. Les textes doivent être en français.
+const recipes = [
+ {id:1,title:"Gâteau au chocolat moelleux",category:"Chocolat",emoji:"🍫",time:"15 min",cook:"25–30 min",servings:"6 personnes",intro:"Un gâteau tendre et chocolaté, parfait pour le goûter.",ingredients:["200 g de chocolat noir","100 g de beurre","3 œufs","100 g de sucre","60 g de farine"],steps:["Préchauffez le four à 180 °C (chaleur traditionnelle).","Faites fondre le chocolat avec le beurre, puis laissez tiédir.","Fouettez les œufs avec le sucre. Incorporez le chocolat fondu.","Ajoutez la farine et mélangez juste assez pour obtenir une pâte homogène.","Versez dans un moule beurré de 20 à 22 cm et enfournez 25 à 30 minutes. Vérifiez la cuisson avec la pointe d’un couteau."],tip:"Pour un cœur plus fondant, commencez à vérifier la cuisson vers 22 minutes."},
+ {id:2,title:"Cookies aux pépites de chocolat",category:"Biscuits",emoji:"🍪",time:"15 min",cook:"10–12 min",servings:"12 cookies",intro:"Des cookies dorés sur les bords et moelleux au centre.",ingredients:["120 g de beurre mou","100 g de sucre roux","1 œuf","180 g de farine","1/2 sachet de levure chimique","120 g de pépites de chocolat"],steps:["Préchauffez le four à 180 °C.","Mélangez le beurre mou et le sucre roux.","Ajoutez l’œuf, puis la farine et la levure.","Incorporez les pépites de chocolat.","Formez 12 boules, espacez-les sur une plaque recouverte de papier cuisson et aplatissez légèrement.","Faites cuire 10 à 12 minutes. Laissez refroidir quelques minutes sur la plaque."],tip:"Sortez les cookies quand le centre semble encore légèrement tendre : ils finiront de se raffermir en refroidissant."},
+ {id:3,title:"Verrines chocolat-banane sans cuisson",category:"Sans cuisson",emoji:"🍌",time:"15 min",cook:"0 min",servings:"4 verrines",intro:"Un dessert rapide et gourmand, sans allumer le four.",ingredients:["2 bananes mûres","250 g de fromage blanc","2 c. à soupe de cacao non sucré","2 c. à soupe de miel ou de sucre","4 biscuits secs émiettés"],steps:["Mélangez le fromage blanc avec le cacao et le miel.","Coupez les bananes en rondelles.","Répartissez les biscuits émiettés dans 4 verrines.","Ajoutez une couche de crème au chocolat puis les rondelles de banane.","Terminez avec un peu de crème et placez au réfrigérateur 20 à 30 minutes avant de servir."],tip:"Ajoutez les rondelles de banane au dernier moment si vous préparez les verrines à l’avance."}
+];
+const grid=document.getElementById('recipeGrid'), search=document.getElementById('search');
+function render(list){grid.innerHTML='';document.getElementById('count').textContent=list.length+' recette(s)';document.getElementById('empty').style.display=list.length?'none':'block';list.forEach(r=>{const card=document.createElement('article');card.className='card';card.innerHTML=`<div class="card-art" aria-hidden="true">${r.emoji}</div><div class="card-body"><span class="tag">${r.category}</span><h3>${r.title}</h3><p>${r.intro}</p><div class="meta">⏱ ${r.time} de préparation · 🔥 ${r.cook}</div><button type="button" data-id="${r.id}">Voir la recette</button></div>`;card.querySelector('button').addEventListener('click',()=>openRecipe(r));grid.appendChild(card)})}
+function openRecipe(r){document.getElementById('recipeDetail').innerHTML=`<p class="tag">${r.category}</p><h2 id="modalTitle">${r.emoji} ${r.title}</h2><p>${r.intro}</p><p><strong>Préparation :</strong> ${r.time} · <strong>Cuisson :</strong> ${r.cook} · <strong>Pour :</strong> ${r.servings}</p><div class="recipe-layout"><div><h3>Ingrédients</h3><ul>${r.ingredients.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h3>Préparation</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol></div></div><p><strong>Astuce Miamélie :</strong> ${r.tip}</p>`;document.getElementById('modal').style.display='block';document.body.style.overflow='hidden'}
+document.getElementById('close').addEventListener('click',()=>{document.getElementById('modal').style.display='none';document.body.style.overflow=''});
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal'){e.currentTarget.style.display='none';document.body.style.overflow=''}});
+search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();render(recipes.filter(r=>(r.title+' '+r.category+' '+r.intro+' '+r.ingredients.join(' ')).toLowerCase().includes(q)))});
+document.querySelectorAll('nav a[data-filter]').forEach(a=>a.addEventListener('click',()=>{search.value=a.dataset.filter;render(recipes.filter(r=>(r.title+' '+r.category+' '+r.intro).toLowerCase().includes(a.dataset.filter.toLowerCase())))}));
+document.getElementById('year').textContent=new Date().getFullYear();render(recipes);
+</script>
+</body>
+</html>
